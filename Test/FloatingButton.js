@@ -29,6 +29,18 @@ export default class FloatingButton extends React.Component {
             ]
         };
 
+        const thumbStyle = {
+            transform: [
+                { scale: this.animation },
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -140]
+                    })
+                }
+            ]
+        };
+
         const rotation = {
             transform: [
                 {
@@ -42,6 +54,12 @@ export default class FloatingButton extends React.Component {
 
         return (
             <View style={[styles.container, this.props.style]}>
+                <TouchableWithoutFeedback>
+                    <Animated.View style={[styles.button, styles.secondary, thumbStyle]}>
+                        <Entypo name="hair-cross" size={20} color="#F02A4B" />
+                    </Animated.View>
+                </TouchableWithoutFeedback>
+
                 <TouchableWithoutFeedback>
                     <Animated.View style={[styles.button, styles.secondary, pinStyle]}>
                         <Entypo name="location-pin" size={20} color="#F02A4B" />

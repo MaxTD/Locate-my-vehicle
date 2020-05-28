@@ -1,9 +1,3 @@
-// iOS: "1.0"
-// Android: "1.0"
-// Built by Carlo
-
-//MAX ENTERTAINMENT
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -14,12 +8,8 @@ import {
   Dimensions
 } from 'react-native';
 
-import { createAppContainer } from "react-navigation";
-import { createBottomTabNavigator } from "react-navigation-tabs";
-import { FontAwesome5 } from "@expo/vector-icons";
-
 import FloatingButton from "./Test/FloatingButton";
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView from 'react-native-maps'
 
 const { width, height } = Dimensions.get('window')
 
@@ -28,7 +18,6 @@ const SCREEN_WIDTH = width
 const ASPECT_RATIO = width / height
 const LATTITUDE_DELTA = 0.002
 const LONGTITUDE_DELTA = LATTITUDE_DELTA * ASPECT_RATIO
-
 
 export default class Map extends Component {
   constructor(props) {
@@ -92,10 +81,8 @@ export default class Map extends Component {
     return (
       <View style={styles.container}>
         <MapView
-          provider={PROVIDER_GOOGLE}
-          mapType="satellite"
           style={styles.map}
-          region={this.state.initialPosition}>
+          initialRegion={this.state.region}>
 
           <MapView.Marker
             coordinate={this.state.markerPosition}>
