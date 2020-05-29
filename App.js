@@ -96,7 +96,7 @@ export default class Map extends Component {
           </MapView>
           <View style={{
             backgroundColor: "blue", height: "10%", width: "100%",
-            alignSelf: "flex-end", borderRadius: "25 0"
+            alignSelf: "flex-end", borderTopLeftRadius: "25", borderTopRightRadius: "25", 
           }}>
           </View>
           <FloatingButton style={{ bottom: 100 }} />
