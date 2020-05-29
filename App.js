@@ -1,15 +1,16 @@
+// IOS v1.1
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  TouchableOpacity,
   StyleSheet,
-  Text,
   View,
   Dimensions
 } from 'react-native';
 
 import FloatingButton from "./Test/FloatingButton";
 import MapView from 'react-native-maps'
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get('window')
 
@@ -18,6 +19,8 @@ const SCREEN_WIDTH = width
 const ASPECT_RATIO = width / height
 const LATTITUDE_DELTA = 0.002
 const LONGTITUDE_DELTA = LATTITUDE_DELTA * ASPECT_RATIO
+
+// export { AppContainer, TabNavigator }
 
 export default class Map extends Component {
   constructor(props) {
@@ -79,26 +82,35 @@ export default class Map extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MapView
-          style={styles.map}
-          initialRegion={this.state.region}>
-
-          <MapView.Marker
-            coordinate={this.state.markerPosition}>
-            <View style={styles.radius}>
-              <View style={styles.marker} />
-            </View>
-          </MapView.Marker>
-        </MapView>
-
-        <FloatingButton style={{ bottom: 100 }} />
+      <View style={styles.containerTop}>
+        <View style={styles.container}>
+          <MapView
+            style={styles.map}
+            initialRegion={this.state.region}>
+            <MapView.Marker
+              coordinate={this.state.markerPosition}>
+              <View style={styles.radius}>
+                <View style={styles.marker} />
+              </View>
+            </MapView.Marker>
+          </MapView>
+          <View style={{
+            backgroundColor: "blue", height: "10%", width: "100%",
+            alignSelf: "flex-end", borderRadius: "25 0"
+          }}>
+          </View>
+          <FloatingButton style={{ bottom: 100 }} />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  containerTop: {
+    borderRadius: 6,
+    flex: 1,
+  },
   radius: {
     height: 50,
     width: 50,
@@ -120,8 +132,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#007AFF',
   },
   container: {
+    display: "flex",
+    height: "100%",
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "flex-end",
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
